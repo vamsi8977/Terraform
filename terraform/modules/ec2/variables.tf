@@ -13,11 +13,11 @@ variable "vpc_id" {
   description = "The ID of the VPC in which to create the instance."
 }
 variable "subnet_ids" {
-  type        = "list"
+  type        = list
   description = "The ID of the subnet in which to create the instance into.  A subnet is a range of IP addresses in your VPC that can be used to isolate different EC2 resources from each other or from the Internet. Each subnet resides in one Availability Zone."
 }
 variable "availability_zones" {
-  type        = "list"
+  type        = list
   description = "availability zone where the ec2 instance is deployed."
 }
 variable "ec2_instance_count" {
@@ -25,11 +25,11 @@ variable "ec2_instance_count" {
   default     = "1"
 }
 variable "ec2_instance_names" {
-  type        = "list"
+  type        = list
   description = "Each EC2 server that is used in AWS accounts should be named with the following pattern"
 }
 variable "ec2_vpc_cidrs" {
-  type        = "list"
+  type        = list
   description = "Allows connection from Jenkins to ec2 servers"
 }
 variable "env" {
