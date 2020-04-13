@@ -26,14 +26,14 @@ variable "ec2_instance_count" {
 }
 variable "ec2_instance_names" {
   type        = "list"
-  description = "Each EC2 server that is used in Comerica's AWS accounts should be named with the following pattern: <ENVIRONMENT>-<APP_CODE>-<ROLE>-<APP_CATEGORY>-<APP_SUB_CATEGORY>-VM<NUMBER>"
+  description = "Each EC2 server that is used in AWS accounts should be named with the following pattern"
 }
 variable "ec2_vpc_cidrs" {
   type        = "list"
-  description = "Allows connection from Jenkins to cpy servers"
+  description = "Allows connection from Jenkins to ec2 servers"
 }
 variable "env" {
-  description = "Name of environment: SS (shared-servies), PROD, QA, DEV, SB (sandbox), SEC (security)"
+  description = "Name of environment"
 }
 variable "app_code" {
   description = "three character app code"
