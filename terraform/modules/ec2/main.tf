@@ -2,7 +2,6 @@ resource "aws_instance" "bvk_ec2_instance" {
   count                  = "${var.ec2_instance_count}"
   ami                    = "${var.ami}"
   instance_type          = "${var.instance_type}"
-  ec2_instance_names     = "${var.ec2_instance_names}"
   vpc_security_group_ids = ["${aws_security_group.ec_sg.id}"]
   subnet_id              = "${element(var.subnet_ids, count.index)}"
   user_data              = "${element(data.template_file.user_data.*.rendered, count.index)}"
