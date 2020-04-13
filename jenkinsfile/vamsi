@@ -48,13 +48,4 @@ stage('TF plan') {
       }
     }
   }//end stages
-  post {
-      success {
-          echo "The build was success."
-      }
-      failure {
-          echo "The build was failed."
-      }
-    } 
-  }
 }
