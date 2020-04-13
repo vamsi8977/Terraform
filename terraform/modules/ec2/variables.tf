@@ -16,7 +16,7 @@ variable "ec2_instance_count" {
 }
 variable "ec2_instance_names" {
   description = "Each EC2 server that is used in AWS accounts should be named with the following pattern"
-  default     = ""
+  default     = "vamsi001awsd"
 }
 variable "ec2_vpc_cidrs" {
   description = "Allows connection from Jenkins to ec2 servers"
