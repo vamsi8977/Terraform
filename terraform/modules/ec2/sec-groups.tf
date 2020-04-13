@@ -3,10 +3,6 @@ resource "aws_security_group" "ec_sg" {
   name        = "${var.app_code}-${var.env}-ec-sg"
   description = "${var.app_code} app server security group"
   vpc_id      = "${var.vpc_id}"
-
-  tags = "${merge(local.common_tags,
-      map("Name", "${var.app_code}-${var.env}-ec-sg")
-    )}"
 }
 resource "aws_security_group_rule" "mac_ingress" {
   type              = "ingress"

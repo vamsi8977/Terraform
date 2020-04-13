@@ -1,14 +1,3 @@
-locals {
-  backup_tags {
-    Tech.BackUp.Time.HourOfDay = "22"
-    Tech.BackUp.Retention.Days = "07"
-    Tech.BackUp.RollFlag       = "false"
-  }
-  common_tags {
-    Tech.Env     = "${upper(var.env)}"
-    Tech.AppCode = "${upper(var.app_code)}"
-  }
-}
 variable "vpc_id" {
   description = "The ID of the VPC in which to create the instance."
 }
@@ -39,7 +28,6 @@ variable "instance_type" {
   description = "The type of instance determines your instance's CPU capacity, memory, and storage (e.g., m1.small, c1.xlarge)"
 }
 variable "ec2_mac_cidrs" {
-  type        = "list"
   description = "Allows alb to app servers"
 }
 variable "ami" {

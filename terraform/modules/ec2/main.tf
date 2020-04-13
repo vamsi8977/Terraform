@@ -7,13 +7,6 @@ resource "aws_instance" "bvk_ec2_instance" {
   vpc_security_group_ids = ["${aws_security_group.ec_sg.id}"]
   subnet_id              = "${element(var.subnet_ids, count.index)}"
   user_data              = "${element(data.template_file.user_data.*.rendered, count.index)}"
-
-  tags = "${merge(local.common_tags, local.backup_tags, map(
-    "Name", "${element(var.ec2_instance_names, count.index)}",
-  ))}"
-  volume_tags = "${merge(local.common_tags, local.backup_tags, map(
-      "Name", "${element(var.ec2_instance_names, count.index)}",
-    ))}"
 }
 
 data "template_file" "user_data" {
