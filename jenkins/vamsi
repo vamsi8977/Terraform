@@ -24,6 +24,7 @@ options {
           """
         }
       }
+    } 
   }//end stages
   post {
       success {
