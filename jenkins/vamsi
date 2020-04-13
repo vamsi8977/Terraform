@@ -1,0 +1,36 @@
+pipeline {
+agent any
+options {
+    buildDiscarder(logRotator(numToKeepStr:'10' , artifactNumToKeepStr: '10'))
+    timestamps()
+    }
+  stages {
+    stage('CheckOut') {
+      steps {
+        echo 'Checking out project from Bitbucket....'
+        dir("vamsi") {
+          git branch: 'master', url: 'https://github.com/vamsi8977/Terraform.git'
+        }
+      }
+    }
+    stage('TF Plan') {
+      steps {
+        ansiColor('xterm') {
+          echo 'Cleaning workspace....'
+           sh """
+          cd ${WORKSPACE}/vamsi/terraform;
+          terraform init
+          terraform plan
+          """
+        }
+      }
+  }//end stages
+  post {
+      success {
+          echo "The build success."
+      }
+      failure {
+          echo "The build failed."
+      }
+  }
+}
