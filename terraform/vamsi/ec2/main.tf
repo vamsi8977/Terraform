@@ -1,8 +1,6 @@
 provider "aws" {}
 module "ec2" {
   source                = "../../../modules/ec2"
-  ec2_instance_names    = ["vamsi001awsd"]
-  ec2_instance_count    = "1"
   env                   = "sandbox"
   app_code              = "bommasani"
   ami                   = "ami-097834fcb3081f51a"
