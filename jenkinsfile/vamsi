@@ -4,6 +4,9 @@ options {
     buildDiscarder(logRotator(numToKeepStr:'10' , artifactNumToKeepStr: '10'))
     timestamps()
     }
+environment {
+      inventoryName    = 'Bommasani'
+}
   stages {
     stage('CheckOut') {
       steps {
@@ -13,25 +16,44 @@ options {
         }
       }
     }
-stage('TF Plan') {
+stage('TF Version') {
+      steps {
+        ansiColor('xterm') {
+          echo 'Cleaning workspace....'
+           terraform -v
+          """
+        }
+      }
+    }
+stage('TF init') {
       steps {
         ansiColor('xterm') {
           echo 'Cleaning workspace....'
            sh """
           cd ${WORKSPACE}/vamsi/terraform;
           terraform init
+          """
+        }
+      }
+    }
+stage('TF plan') {
+      steps {
+        ansiColor('xterm') {
+          echo 'Cleaning workspace....'
+           sh """
+          cd ${WORKSPACE}/vamsi/terraform;
           terraform plan
           """
         }
       }
-    } 
+    }
   }//end stages
   post {
       success {
-          echo "The build success."
+          echo "The build was success."
       }
       failure {
-          echo "The build failed."
+          echo "The build was failed."
       }
   }
 }
