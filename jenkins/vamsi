@@ -13,7 +13,7 @@ options {
         }
       }
     }
-    stage('TF Plan') {
+stage('TF Plan') {
       steps {
         ansiColor('xterm') {
           echo 'Cleaning workspace....'
