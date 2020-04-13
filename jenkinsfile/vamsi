@@ -56,3 +56,4 @@ stage('TF plan') {
           echo "The build was failed."
       }
   }
+}
