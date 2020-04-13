@@ -13,7 +13,7 @@ data "template_file" "user_data" {
   count    = "${var.ec2_instance_count}"
   template = "${file("${path.module}/templates/userdata.tpl")}"
 
-  vars {
+  vars = {
     host_name  = "${element(var.ec2_instance_names, count.index)}"
     app_code  = "${var.app_code}"
     env       = "${var.env}"
